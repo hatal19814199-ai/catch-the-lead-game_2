@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Поймай лид — digital catch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__text">Поймай лид</span>
+      <span class="brand__tag">digital funnel</span>
+    </header>
+
+    <section class="hud" id="hud" aria-live="polite">
+      <div class="hud__cell hud__cell--score">
+        <span class="hud__label">Очки</span>
+        <span class="hud__value" id="score">0</span>
+      </div>
+      <div class="hud__cell hud__cell--timer">
+        <span class="hud__label">Время</span>
+        <span class="hud__value" id="timer">60</span>
+      </div>
+      <div class="hud__cell hud__cell--lives">
+        <span class="hud__label">Репутация</span>
+        <div class="hearts" id="hearts" aria-label="Осталось жизней"></div>
+      </div>
+    </section>
+
+    <section class="legend" id="legend" aria-label="Что ловить в игре">
+      <div class="legend__item legend__item--catch">
+        <div class="legend__icon-wrap" aria-hidden="true">
+          <div class="legend__emoji-row legend__emoji-row--good">
+            <span>🍊</span><span>🍋</span><span>🍎</span>
+          </div>
+        </div>
+        <div class="legend__copy">
+          <span class="legend__title">Съедобное — ловите</span>
+          <span class="legend__desc"><strong>Апельсин, лимон, яблоко</strong> — фрукты, их нужно поймать в корзину: очки и комбо.</span>
+        </div>
+      </div>
+      <div class="legend__item legend__item--avoid">
+        <div class="legend__icon-wrap" aria-hidden="true">
+          <div class="legend__emoji-row legend__emoji-row--bad">
+            <span>🫖</span><span>⚽</span><span>🏸</span>
+          </div>
+        </div>
+        <div class="legend__copy">
+          <span class="legend__title">Несъедобное — мимо</span>
+          <span class="legend__desc"><strong>Чайник, мяч, ракетка</strong> — не еда: не ловите корзиной, иначе штраф и минус к репутации.</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="stage-wrap">
+      <canvas id="game" width="900" height="560" aria-label="Игровое поле" aria-describedby="legend"></canvas>
+      <div class="hint" id="hint">Ведите корзину под фруктами 🍊 🍋 🍎 — хорошо; чайник, мяч и ракетку — обходите стороной.</div>
+    </div>
+
+    <div class="overlay" id="startScreen">
+      <div class="panel panel--hero">
+        <p class="panel__eyebrow">Интерактив для сайта</p>
+        <h1 class="panel__title">Поймай лид</h1>
+        <p class="panel__lead">
+          Сверху падают <strong>фрукты и «не еда»</strong>. Соберите в корзину только съедобное — апельсин, лимон и яблоко.
+        </p>
+        <ul class="rules">
+          <li><span class="rules__good" aria-hidden="true"></span> <strong>Съедобное</strong> — 🍊 🍋 🍎; подставляйте корзину снизу</li>
+          <li><span class="rules__bad" aria-hidden="true"></span> <strong>Несъедобное</strong> — 🫖 ⚽ 🏸; не попадайте им в корзину</li>
+        </ul>
+        <p class="panel__note">Пропущенный фрукт не штрафует; пойманный чайник, мяч или ракетку — штрафует.</p>
+        <button type="button" class="btn btn--primary" id="btnStart">Начать игру</button>
+      </div>
+    </div>
+
+    <div class="overlay overlay--dim" id="endScreen" hidden>
+      <div class="panel panel--result">
+        <p class="panel__eyebrow" id="endSubtitle">Раунд завершён</p>
+        <h2 class="panel__title" id="endTitle">Игра окончена</h2>
+        <p class="panel__scoreline">Ваш счёт: <strong id="finalScore">0</strong></p>
+        <p class="panel__meta" id="endMeta"></p>
+        <div class="panel__actions">
+          <button type="button" class="btn btn--primary" id="btnAgain">Играть снова</button>
+          <button type="button" class="btn btn--ghost" id="btnClose">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

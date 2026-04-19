@@ -1,0 +1,16 @@
+{
+  "name": "poymay-lid",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Браузерная игра «Поймай лид» — ловите фрукты, избегайте несъедобного",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx --yes serve@14 ."
+  },
+  "keywords": [
+    "game",
+    "canvas",
+    "browser",
+    "static"
+  ]
+}
